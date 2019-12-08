@@ -54,7 +54,7 @@ public class RecursiveReverse extends InputFunc {
 		tail.next = head;
 		head.next=null;
 		
-		return finalhead;
+		return finalhead; 
 	}
 	
 	public static void main(String[] args)
