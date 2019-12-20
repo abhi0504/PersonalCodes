@@ -18,7 +18,6 @@ public class InputFunc {
 				Head = newNode;
 				tail = newNode;
 			}
-			else
 			{
 				tail.next = newNode;
 				tail = newNode;
