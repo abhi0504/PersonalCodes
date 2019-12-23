@@ -53,6 +53,7 @@ public class Stack_using_array {
 	   int temp = top;
 	   top--;
 	   return temp;
+	
    }
    
 }
