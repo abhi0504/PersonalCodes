@@ -6,7 +6,6 @@ public class queueUsingArray {
    private int front=-1;
    private int rear=-1;
    private int size=0;
-	
    
    public queueUsingArray()
    {
