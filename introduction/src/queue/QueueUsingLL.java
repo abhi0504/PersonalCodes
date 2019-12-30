@@ -26,7 +26,7 @@ public class QueueUsingLL<T> {
 		return size;
 	}
 	
-	boolean isempty()
+	public boolean isempty()
 	{
 		if(size==0)
 		{
@@ -38,7 +38,7 @@ public class QueueUsingLL<T> {
 		}
 	}
 	
-	void enqueue(T element)
+	public void enqueue(T element)
 	{
 		Node<T> newnode = new Node(element);
 		if(size==0)
@@ -54,7 +54,7 @@ public class QueueUsingLL<T> {
 		size++;
 	}
 	
-	T dequeue() throws queue_empty_exception
+	public T dequeue() throws queue_empty_exception
 	{
 		T temp = front.data;
 		if(size==0)

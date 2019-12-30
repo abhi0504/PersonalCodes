@@ -1,5 +1,8 @@
 package trees;
 import java.util.*;
+
+import queue.QueueUsingLL;
+import queue.queue_empty_exception;
 public class TreeUse {
 	
 	public static TreeNode<Integer> takeinput(Scanner s)
@@ -32,10 +35,41 @@ public class TreeUse {
 		}
 	}
 	
+	public static TreeNode<Integer> takeInputLevelWise()
+	{
+		Scanner s = new Scanner(System.in);
+		System.out.println("Enter root data");
+		int rootdata = s.nextInt();
+		QueueUsingLL<TreeNode<Integer>> pendingnodes = new QueueUsingLL<TreeNode<Integer>>();
+		TreeNode<Integer> root = new TreeNode<Integer>(rootdata);
+		pendingnodes.enqueue(root);
+		while(!pendingnodes.isempty())
+		{
+			try 
+			{
+				TreeNode<Integer> frontnode = pendingnodes.dequeue();
+				System.out.println("Enter total no. of child of " + frontnode.data );
+				int numchild=s.nextInt();
+				for(int i=0;i<numchild;i++)
+				{
+				   System.out.println("Enter the " + (i+1) + "th child of" + frontnode.data);	
+				   int child = s.nextInt();
+				   TreeNode<Integer> childnode = new TreeNode<Integer>(child);
+				   frontnode.children.add(childnode);
+				   pendingnodes.enqueue(childnode);
+				}
+			} 
+			catch (queue_empty_exception e) 
+			{
+				return null;
+			}
+		}
+		return root;
+	}
 	public static void main(String[] args) {
 		
 		Scanner s = new Scanner(System.in);
-		TreeNode<Integer> root = takeinput(s);
+		TreeNode<Integer> root = takeInputLevelWise();
 		print(root);
 		
 		
