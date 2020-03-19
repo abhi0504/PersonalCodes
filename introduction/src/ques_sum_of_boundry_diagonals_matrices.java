@@ -1,44 +1,79 @@
 import java.util.Scanner;
 
 public class ques_sum_of_boundry_diagonals_matrices {
+	public static boolean checkprime(int num)
+	{
+        boolean flag = false;
+        for(int i = 2; i <= num/2; ++i)
+        {
+            // condition for nonprime number
+            if(num % i == 0)
+            {
+                flag = true;
+                break;
+            }
+        }
 
-	public static void main(String[] args) {
+        if (!flag)
+            return true;
+        else
+            return false;
+	}
+	
 
-		Scanner s = new Scanner(System.in);
-		int n=s.nextInt();
-		int a[][] = new int[n][n];
-		int sum=0;
-		for(int i=0;i<n;i++)
+    
+	public static int nearest_prime(int n)
+	{
+		int count = 1;
+		int no = n;
+		int np = n;
+		
+		while(!checkprime(np))
 		{
-			for(int j=0;j<n;j++)
-			{
-				a[i][j]=s.nextInt();
-			}
+			np = np+count ;
 		}
 		
-		for(int i=0;i<n;i++)
+		while(!checkprime(no))
 		{
-			for(int j=0;j<n;j++)
-			{
-				System.out.print(a[i][j]);
-			}
-			System.out.println(" ");
+			no = no-count ;
+		}	
+	
+		if((n-no)>np-n)
+		{
+			n=np;
+		}
+		else
+		{
+			n=no;
 		}
 		
-		for(int i=0;i<n;i++)
-		{
-			for(int j=0;j<n;j++)
-			{
-				if(i==0||i==(n-1)||j==0||j==n-1||i==j||(i+j)==(n-1))
-				{
-					sum = sum + a[i][j];
-				}
-			}
-		}
-		
-		System.out.println(sum);
-
-		
+		return n;
 	}
 
+    public static void main(String args[] ) throws Exception {
+
+        Scanner s = new Scanner(System.in);
+         int nooftimes = 0 , noofchar;
+         int ccc = s.nextInt();
+        
+		
+		int check = 0;char aab;
+        while(nooftimes<ccc)
+        {
+        	noofchar = s.nextInt();
+        	String n = s.next();
+		for(int i=0 ; i<noofchar ; i++)
+		{
+			
+			if(!checkprime(n.charAt(i)))
+			{
+				check = nearest_prime(n.charAt(i));
+				aab = (char) check;
+				System.out.print(aab);
+			}
+		}
+		nooftimes++;
+        }
+
+    }
 }
