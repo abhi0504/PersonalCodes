@@ -5,7 +5,7 @@ public class MidPoint extends MergeTwoLinkedList {
 	public static Node<Integer> Midpt(Node<Integer> H1)
 	{
 		Node<Integer> slow = H1, fast = H1;
-		while(slow != null && fast != null)
+		while(fast.next != null && fast.next.next != null)
 		{
 			slow = slow.next;
 			fast = fast.next.next;
