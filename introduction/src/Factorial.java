@@ -2,55 +2,67 @@ import java.util.Scanner;
 
 
 public class Factorial {
-	public void new_func()
-	{
-		Scanner sc = new Scanner(System.in);
-	    int n = sc.nextInt();
-	    int m=1;
-	    char t ='m';
-	    for(int i=0;n>0;i++)
-	    {
-	    	if((i%2)==0)
-	    	{
-	    		n = n-m;
-	    		t='m';
-	    	}
-	    	else
-	    	{
-	    		n = n-(2*m);
-	    		t='p';
-	    	}
-	    	m++;
-	    }
-	    if(t=='m')
-	    {System.out.println("MOTU");}
-	    else
-	    	System.out.println("PATLU");
-	}
+
+	
 
 	public static void main(String[] args) {
-	    Scanner sc = new Scanner(System.in);
-	    int n = sc.nextInt();
-	    int m=1;
-	    char t ='m';
-	    for(int i=0;n>0;i++)
-	    {
-	    	if((i%2)==0)
-	    	{
-	    		n = n-m;
-	    		t='m';
-	    	}
-	    	else
-	    	{
-	    		n = n-(2*m);
-	    		t='p';
-	    	}
-	    	m++;
-	    }
-	    if(t=='m')
-	    {System.out.println("MOTU");}
-	    else
-	    	System.out.println("PATLU");
+		Scanner s = new Scanner(System.in);
+		int t = s.nextInt();
+		while(t>0)
+		{
+		    int n = s.nextInt();
+		    int type = 0;
+		    int a[] = new int[n+1]; int max =0 ;
+		    boolean check = true;
+		    int arr[] = new int[n];
+		    for(int i = 0 ; i<n ; i++)
+		    {
+		    	arr[i] = s.nextInt();
+
+		    }
+		    for(int i = 0 ; i<n ; i++)
+		    {
+		    	if(i==0)
+		    	{
+			    	type = arr[i];
+			    	a[type]++;
+		    	}
+		    	
+		    	else 
+		    	{
+		    		if(arr[i] == arr[i-1])
+		    		{
+		    			check = !check;
+		    			if(check == true)
+			    		{
+			    			type = arr[i];
+					    	a[type] ++ ;
+			    		}
+		    		}
+		    		
+		    		else
+		    		{
+		    			type = arr[i];
+				    	a[type] ++ ;
+		    		}
+		    		
+		    	}
+		    	
+		    }
+		    
+		    for(int i = 0 ; i<n ; i++)
+		    {
+		    	if(a[max]<a[i])
+		    	{
+		    		max = i;
+		    	}
+		    }
+		    System.out.println(max);
+		    
+		    t--;
+		}
+       
+        s.close();
 
 	}
 

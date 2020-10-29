@@ -1,33 +1,77 @@
 import java.util.*;
+
+import linkedList2.Node;
 public class AmanQues {
+	
+	public static ArrayList<ArrayList<Integer>> subsets(int[] S) {
+		if (S == null)
+			return null;
+	 
+		Arrays.sort(S);
+	 
+		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+	 
+		for (int i = 0; i < S.length; i++) {
+			ArrayList<ArrayList<Integer>> temp = new ArrayList<ArrayList<Integer>>();
+	 
+			//get sets that are already in result
+			for (ArrayList<Integer> a : result) {
+				temp.add(new ArrayList<Integer>(a));
+			}
+	 
+			//add S[i] to existing sets
+			for (ArrayList<Integer> a : temp) {
+				a.add(S[i]);
+			}
+	 
+			//add S[i] only as a set
+			ArrayList<Integer> single = new ArrayList<Integer>();
+			single.add(S[i]);
+			temp.add(single);
+	 
+			result.addAll(temp);
+		}
+	 
+		//add empty set
+		result.add(new ArrayList<Integer>());
+	 
+		return result;
+	}
+	
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Scanner sc = new Scanner(System.in);
-		String a;
-		a=sc.nextLine();
-//		sc.nextLine();
-		char arr[] = new char[a.length()];
-		int n = a.length();
-		for(int i=0,j=n-1;j>=0;i++,j--)
+		
+		Scanner s = new Scanner(System.in);
+		int t = s.nextInt();
+		while(t>0)
 		{
-//			arr[i]=a.charAt(j);
-			if(a.charAt(i)==' ')
+			int sum = 1;
+			int num = 1;
+			int n = s.nextInt();
+			int a[] = new int[n];
+			for(int i = 0 ; i < n ; i++)
 			{
-				for(int k=i,l=j+1;k<i;k++,l--)
-				{
-					arr[k]=a.charAt(l);
-				}
-				arr[i]=' ';
-			}	
-//			else
-//			{
-//				arr[i]=a.charAt(i);
-//			}
+				a[i] = s.nextInt();
+			}
+			ArrayList<ArrayList<Integer>> aList = subsets(a);
+			
+			 for (int i = 0; i < aList.size(); i++) { 
+		            for (int j = 0; j < aList.get(i).size(); j++) { 
+		                System.out.print(aList.get(i).get(j) + " "); 
+		            } 
+		            System.out.println("@"); 
+		        } 
+			
+			t--;
 		}
-		for(int i=0;i<a.length();i++)
-		{
-			System.out.print(arr[i]);
-		}
+		
+		s.close();
+		
+	}
+
+
+	private static void subsets(Object s) {
+		// TODO Auto-generated method stub
+		
 	}
 }
