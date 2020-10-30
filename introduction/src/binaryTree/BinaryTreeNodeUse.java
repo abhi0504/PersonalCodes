@@ -2,6 +2,8 @@ package binaryTree;
 
 import java.util.Scanner;
 
+import com.sun.org.apache.bcel.internal.generic.INEG;
+
 import trees.TreeNode;
 
 public class BinaryTreeNodeUse {
@@ -459,7 +461,7 @@ public class BinaryTreeNodeUse {
 		int min = Math.min(root.data, Math.min(leftOutput.second.first, rightOutput.second.first));
 		int max = Math.max(root.data, Math.max(leftOutput.second.second, rightOutput.second.second));
 		
-		boolean isBST = root.data < leftOutput.second.second && root.data > rightOutput.second.first &&
+		boolean isBST = root.data > leftOutput.second.second && root.data <= rightOutput.second.first &&
 				leftOutput.first && rightOutput.first;
 		
 		Pair<Boolean, Pair<Integer, Integer>> output = new Pair<Boolean, Pair<Integer,Integer>>();
@@ -471,6 +473,27 @@ public class BinaryTreeNodeUse {
 		
 	}
 	
+	public static boolean isBST3(BinaryTreeNode<Integer> root , int min , int max)
+	{
+		if(root == null)
+		{
+			return true;
+		}
+		if(root.data < min || root.data > max)
+		{
+			return false;
+		}
+		boolean isLeftok = isBST3(root.left, min, root.data-1);
+		boolean isRightok = isBST3(root.right, root.data, max);
+		
+		return isLeftok && isRightok ;
+		
+	}
+	
+	public static Pair<Node<Integer>, Node<Integer>> BSTtosortedLL(BinaryTreeNode<Integer> root)
+	{
+		
+	}
 	
 	
 	public static void main(String[] args) throws queue_empty_exception 
@@ -501,6 +524,7 @@ public class BinaryTreeNodeUse {
 //		System.out.println(BSTsearchFunc(BSTroot, 10).data);
 		System.out.println(isBST1(BSTroot));
 		System.out.println(isBST2(BSTroot).first);
+		System.out.println(isBST3(BSTroot , -5555 , 999999));
 	}
 	
 }
