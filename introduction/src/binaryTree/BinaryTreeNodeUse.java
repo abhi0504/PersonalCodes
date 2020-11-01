@@ -2,8 +2,6 @@ package binaryTree;
 
 import java.util.Scanner;
 
-import com.sun.org.apache.bcel.internal.generic.INEG;
-
 import trees.TreeNode;
 
 public class BinaryTreeNodeUse {
@@ -490,9 +488,43 @@ public class BinaryTreeNodeUse {
 		
 	}
 	
-	public static Pair<Node<Integer>, Node<Integer>> BSTtosortedLL(BinaryTreeNode<Integer> root)
+	public static Node<Integer> BSTtosortedLL(BinaryTreeNode<Integer> root)
 	{
+		if(root == null)
+		{
+			return null;
+		}
 		
+		Node<Integer> node = new Node<Integer>(root.data);
+		Node<Integer> leftNode = BSTtosortedLL(root.left);
+		Node<Integer> rightNode = BSTtosortedLL(root.right);
+		Node<Integer> temp = null; 
+		
+		if(leftNode != null)
+		{
+			temp = leftNode;
+			while(temp.next!=null)
+			{
+				temp = temp.next;
+			}
+			temp.next = node;
+			node.next = rightNode;
+			return leftNode;
+		}
+		else
+		{
+			if(rightNode != null)
+			{
+				node.next = rightNode;
+				return node;
+				
+			}
+			else
+			{
+				return node;
+			}
+			
+		}
 	}
 	
 	
@@ -525,6 +557,12 @@ public class BinaryTreeNodeUse {
 		System.out.println(isBST1(BSTroot));
 		System.out.println(isBST2(BSTroot).first);
 		System.out.println(isBST3(BSTroot , -5555 , 999999));
+		Node<Integer> head = BSTtosortedLL(BSTroot);
+		while(head.next.data != null)
+		{
+			System.out.print(head.data + " ");
+			head=head.next;
+		}
 	}
 	
 }
