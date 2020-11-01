@@ -591,11 +591,11 @@ public class BinaryTreeNodeUse {
 		System.out.println(isBST2(BSTroot).first);
 		System.out.println(isBST3(BSTroot , -5555 , 999999));
 		Node<Integer> head = BSTtosortedLL(BSTroot);
-		while(head.next.data != null)
-		{
-			System.out.print(head.data + " ");
-			head=head.next;
-		}
+//		while(head.next.data != null)
+//		{
+//			System.out.print(head.data + " ");
+//			head=head.next;
+//		}
 	}
 	
 }
