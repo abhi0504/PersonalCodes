@@ -1,6 +1,6 @@
 package binaryTree;
 
-import java.util.Scanner;
+import java.util.*;
 
 import trees.TreeNode;
 
@@ -524,6 +524,39 @@ public class BinaryTreeNodeUse {
 				return node;
 			}
 			
+		}
+	}
+	
+	public static ArrayList<Integer> pathToBT(BinaryTreeNode<Integer> root , int data)
+	{
+		if(root==null)
+		{
+			return null;
+		}
+		
+		if(root.data == data)
+		{
+			ArrayList<Integer> output = new ArrayList<Integer>();
+			output.add(root.data);
+			return output;
+		} 
+		
+		ArrayList<Integer> leftArrayList = pathToBT(root.left, data);
+		ArrayList<Integer> rightArrayList = pathToBT(root.right, data);
+		
+		if(leftArrayList != null)
+		{
+			leftArrayList.add(root.data);
+			return leftArrayList;
+		}
+		else if(rightArrayList != null)
+		{
+			rightArrayList.add(root.data);
+			return rightArrayList;
+		}
+		else
+		{
+			return null;
 		}
 	}
 	
