@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 public class question {
 	
@@ -36,7 +37,7 @@ public class question {
  
         // divide the array into blocks of size m
         // m = [1, 2, 4, 8, 16...]
-        for (int m = 1; m &lt;= high - low; m = 2*m)
+        for (int m = 1; m &lt = high - low; m = 2*m)
         {
             for (int i = low; i &lt; high; i += 2*m)
             {
@@ -48,6 +49,95 @@ public class question {
             }
         }
     }
+    
+    private static void printResult(int key, int pos, 
+            SC sC) 
+{ 
+System.out.println("" + key + ", " + sC + ":" + pos); 
+} 
+
+enum SC { 
+EQUAL, 
+EQUAL_OR_BIGGER, 
+EQUAL_OR_SMALLER 
+}; 
+
+public static int searchEqualOrClose(int key, int[] arr, SC sC) 
+{ 
+if (arr == null || arr.length == 0) { 
+return -1; 
+} 
+
+if (arr.length == 1) { // just eliminate case of length==1 
+
+// since algorithm needs min array size==2 
+// to start final evaluations 
+if (arr[0] == key) { 
+return 0; 
+} 
+if (arr[0] < key && sC == SC.EQUAL_OR_SMALLER) { 
+return 0; 
+} 
+if (arr[0] > key && sC == SC.EQUAL_OR_BIGGER) { 
+return 0; 
+} 
+return -1; 
+} 
+return searchEqualOrClose(arr, key, 0, arr.length - 1, sC); 
+} 
+
+private static int searchEqualOrClose(int[] arr, int key, 
+                  int start, int end, SC sC) 
+{ 
+int midPos = (start + end) / 2; 
+int midVal = arr[midPos]; 
+if (midVal == key) { 
+return midPos; // equal is top priority 
+} 
+
+if (start >= end - 1) { 
+if (arr[end] == key) { 
+return end; 
+} 
+if (sC == SC.EQUAL_OR_SMALLER) { 
+
+// find biggest of smaller element 
+if (arr[start] > key && start != 0) { 
+
+// even before if "start" is not a first 
+return start - 1; 
+} 
+if (arr[end] < key) { 
+return end; 
+} 
+if (arr[start] < key) { 
+return start; 
+} 
+return -1; 
+} 
+if (sC == SC.EQUAL_OR_BIGGER) { 
+
+// find smallest of bigger element 
+if (arr[end] < key && end != arr.length - 1) { 
+
+// even after if "end" is not a last 
+return end + 1; 
+} 
+if (arr[start] > key) { 
+return start; 
+} 
+if (arr[end] > key) { 
+return end; 
+} 
+return -1; 
+} 
+return -1; 
+} 
+if (midVal > key) { 
+return searchEqualOrClose(arr, key, start, midPos - 1, sC); 
+} 
+return searchEqualOrClose(arr, key, midPos + 1, end, sC); 
+} 
 
 	    public static void main(String args[] ) throws Exception {
 	        Scanner sc = new Scanner(System.in);
