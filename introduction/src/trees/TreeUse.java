@@ -177,6 +177,42 @@ public class TreeUse {
 		return root.data;
 	}
 	
+	 /* Given a binary tree, print its nodes according to the 
+    "bottom-up" postorder traversal. */
+  void printPostorder(Node node) 
+  { 
+      if (node == null) 
+          return; 
+
+      // first recur on left subtree 
+      printPostorder(node.left); 
+
+      // then recur on right subtree 
+      printPostorder(node.right); 
+
+      // now deal with the node 
+      System.out.print(node.key + " "); 
+  } 
+
+  /* Given a binary tree, print its nodes in inorder*/
+  void printInorder(Node node) 
+  { 
+      if (node == null) 
+          return; 
+
+      /* first recur on left child */
+      printInorder(node.left); 
+
+      /* then print the data of node */
+      System.out.print(node.key + " "); 
+
+      /* now recur on right child */
+      printInorder(node.right); 
+  } 
+
+  /* Given a binary tree, print its nodes in preorder*/
+
+	
 	public static void PreOrder(TreeNode<Integer> root)
 	{
 		System.out.print(root.data + " ");
