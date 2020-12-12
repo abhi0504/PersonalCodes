@@ -396,7 +396,7 @@ public class BinaryTreeNodeUse {
 		}
 		if(root.data >= low && root.data <= high)
 		{
-			System.out.println(root.data);
+			System.out.println(root.data + " ");
 		}
 		if(root.data < low || root.data < high)
 		{
