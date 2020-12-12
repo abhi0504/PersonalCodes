@@ -24,6 +24,66 @@ public class ques_linkList {
    
         return arr; 
     } 
+	
+	public static void printItratively(BinaryTreeNode<Integer> root) 
+	{
+		QueueUsingLL<BinaryTreeNode<Integer>> pendingNodes = new QueueUsingLL<BinaryTreeNode<Integer>>();
+		if(root.data != null)
+		{
+			pendingNodes.enqueue(root);
+		}
+		while(!pendingNodes.isempty())
+		{
+			BinaryTreeNode<Integer> currNode = null ;
+			try {
+				currNode = pendingNodes.dequeue();
+			} catch (queue_empty_exception e) {		
+				return;			
+			}
+			String str = currNode.data + ":";
+			if(currNode.left != null)
+			{
+				pendingNodes.enqueue(currNode.left);
+				str += "L" + currNode.left.data+ ",";
+			}
+			if(currNode.right != null)
+			{
+				pendingNodes.enqueue(currNode.right);
+				str += "R" + currNode.right.data + ",";			
+			}
+			System.out.println(str);
+		}
+	}
+	public static void printItratively(BinaryTreeNode<Integer> root) 
+	{
+		QueueUsingLL<BinaryTreeNode<Integer>> pendingNodes = new QueueUsingLL<BinaryTreeNode<Integer>>();
+		if(root.data != null)
+		{
+			pendingNodes.enqueue(root);
+		}
+		while(!pendingNodes.isempty())
+		{
+			BinaryTreeNode<Integer> currNode = null ;
+			try {
+				currNode = pendingNodes.dequeue();
+			} catch (queue_empty_exception e) {		
+				return;			
+			}
+			String str = currNode.data + ":";
+			if(currNode.left != null)
+			{
+				pendingNodes.enqueue(currNode.left);
+				str += "L" + currNode.left.data+ ",";
+			}
+			if(currNode.right != null)
+			{
+				pendingNodes.enqueue(currNode.right);
+				str += "R" + currNode.right.data + ",";			
+			}
+			System.out.println(str);
+		}
+	}
+
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -56,11 +116,7 @@ public class ques_linkList {
 	    	Friends = deleteElement(Friends, Friends.length, Friends[Friends.length - 1] );
 	    }
 	    
-		}
-		 for (int element: Friends) {
-	            System.out.print(element + " ");
-	        }
+		}}
 	 }
 	}
 
-}
