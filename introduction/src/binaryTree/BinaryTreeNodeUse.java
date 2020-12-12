@@ -384,6 +384,26 @@ public class BinaryTreeNodeUse {
 
 	}
 	
+	public static void BSTrangeElePrint(BinaryTreeNode<Integer> root , int low , int high)
+	{
+		if(root==null)
+		{
+			return ;
+		}
+		if(root.data > low || root.data > high)
+		{
+			BSTrangeElePrint(root.left , low , high);
+		}
+		if(root.data >= low && root.data <= high)
+		{
+			System.out.println(root.data);
+		}
+		if(root.data < low || root.data < high)
+		{
+			BSTrangeElePrint(root.right , low , high);
+		}
+	}
+	
 	public static int maximum(BinaryTreeNode<Integer> root)
 	{
 		if(root == null)
