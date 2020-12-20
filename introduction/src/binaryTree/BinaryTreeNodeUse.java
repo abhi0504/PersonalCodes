@@ -580,6 +580,24 @@ public class BinaryTreeNodeUse {
 		}
 	}
 	
+	public static void Ass1CreateAndDuplicate(BinaryTreeNode<Integer> root)
+	{
+		BinaryTreeNode<Integer> oldLeft ;
+		
+		if(root == null)
+		{
+			return ;
+		}
+		
+		Ass1CreateAndDuplicate(root.left);
+		Ass1CreateAndDuplicate(root.right);
+		
+		oldLeft = root.left;
+		root.left = new BinaryTreeNode<Integer>(root.data);
+		root.left.left = oldLeft;
+		
+	}
+	
 	
 	public static void main(String[] args) throws queue_empty_exception 
 	{
