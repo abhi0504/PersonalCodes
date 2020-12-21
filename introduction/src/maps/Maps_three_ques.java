@@ -1,5 +1,6 @@
 package maps;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Maps_three_ques {
@@ -31,12 +32,38 @@ public class Maps_three_ques {
 		return ans;
 	
 	}
+	
+	public static void printIntersection(int[] a , int[] b)
+	{
+		HashMap<Integer, Boolean> map = new HashMap<Integer, Boolean>();
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for(int i = 0 ; i < a.length ; i++)
+		{
+			map.put(a[i], false);
+		}
+				
+		for(int i = 0 ; i < b.length ; i++)
+		{
+			map.put(b[i], true);
+		}
+		
+		for(int i = 0 ; i < a.length ; i++)
+		{
+			if(map.get(a[i]) == true)
+			{
+				list.add(a[i]);
+			}
+		}
+		System.out.println(list);
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[] a = {1,1,1,1,1,2,2,2,3,3,5,5,5,5,5,5,5,5,55,5,6};
+		int[] b = {1,2,6};
 		int ans = maxFreq(a);
 		System.out.println(ans);
+		printIntersection(a, b);
 
 	}
 

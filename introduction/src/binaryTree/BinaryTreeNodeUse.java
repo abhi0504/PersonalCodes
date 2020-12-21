@@ -655,6 +655,7 @@ public class BinaryTreeNodeUse {
 //			System.out.print(head.data + " ");
 //			head=head.next;
 //		}
+		System.out.println(Ass2LCA(BSTroot, 6, 14).data);
 	}
 	
 }
