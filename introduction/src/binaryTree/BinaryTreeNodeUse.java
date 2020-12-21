@@ -598,6 +598,27 @@ public class BinaryTreeNodeUse {
 		
 	}
 	
+	public static BinaryTreeNode<Integer> Ass2LCA(BinaryTreeNode<Integer> root , int n1 , int n2)
+	{		
+		if(root == null)
+		{
+			return null ;
+		}
+		
+		if(root.data>n1 && root.data>n2)
+		{
+			return Ass2LCA(root.left, n1, n2);
+		}
+		
+		if(root.data<n1 && root.data<n2)
+		{
+			return Ass2LCA(root.right, n1, n2);
+		}
+		
+		return root;
+		
+	}
+	
 	
 	public static void main(String[] args) throws queue_empty_exception 
 	{
