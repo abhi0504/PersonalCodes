@@ -56,15 +56,31 @@ public class Maps_three_ques {
 		}
 		System.out.println(list);
 	}
+	
+	public static void pairSumToZero(int[] a)
+	{
+		HashMap<Integer, Boolean> map = new HashMap<Integer, Boolean>();
+		for(int i = 0 ; i < a.length ; i++)
+		{
+			if(map.containsKey(a[i]*-1) == true)
+			{
+					System.out.println(a[i]*-1 + " " + a[i]);
+			}		
+			else
+			{
+				map.put(a[i], true);
+			}
+		}
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[] a = {1,1,1,1,1,2,2,2,3,3,5,5,5,5,5,5,5,5,55,5,6};
-		int[] b = {1,2,6};
-		int ans = maxFreq(a);
-		System.out.println(ans);
-		printIntersection(a, b);
-
+		int[] b = {2,1,-2,-2,3};
+//		int ans = maxFreq(a);
+//		System.out.println(ans);
+//		printIntersection(a, b);
+		pairSumToZero(b);
 	}
 
 }
