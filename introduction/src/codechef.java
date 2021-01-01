@@ -5,29 +5,24 @@ public class codechef {
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		int t = s.nextInt();
-		while(t>0)
+		while(t-->0)
 		{
 			int n = s.nextInt();
-			int canPresent = 120 - n;
-			String str = s.next();
+			long req = s.nextLong();
+			long days = s.nextLong();
+			int arr[] = new int[n];
+			long sum = 0 ;
 			for(int i = 0 ; i < n ; i++)
 			{
-				if(str.charAt(i) == '1')
-				{
-					canPresent++;
-				}
+				arr[i] = s.nextInt(); 
+				sum += arr[i];
 			}
-			canPresent *= 100;
-			canPresent /= 120;
-			if(canPresent>=75)
+			long ans = sum/req;
+			if(sum>req*days)
 			{
-				System.out.println("YES");
+				ans = days;
 			}
-			else
-			{
-				System.out.println("NO");
-			}
-			t--;
+			System.out.println(ans);
 		}
        
         s.close();
