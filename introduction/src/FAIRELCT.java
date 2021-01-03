@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.*;
 import java.util.Scanner;
 
 public class FAIRELCT {
@@ -31,39 +31,50 @@ public class FAIRELCT {
 				sumB += b[i];
 			}
 			
-			Arrays.sort(a);
-			Arrays.sort(b);
-			
-			int ai = 0;
-			int bi = m-1;
-			
-			int finalAns = 0;
-			
-			while(sumB>sumA && ai < n && bi > 0 )
+			if(sumA>sumB)
 			{
-				sumA = sumA - a[ai] + b[bi]; 
-				sumB = sumB + a[ai] - b[bi];
-				long temp = a[ai];
-				a[ai] = b[bi];
-				b[bi] = temp;
-				ai++;
-				bi--;
-				finalAns++;
-//				System.out.println("ai: " + ai);
-//				System.out.println("bi: " + bi);
-//				System.out.println(sumA);
-//				System.out.println(sumB);
-			}
-			
-			if(sumB>=sumA)
-			{
-				System.out.println(-1);
+				System.out.println(0);
 			}
 			else
 			{
-				System.out.println(finalAns);
+				Arrays.sort(a);
+				Arrays.sort(b);
+				
+				int ai = 0;
+				int bi = m-1;
+				
+				int finalAns = 0;
+				
+				while(ai < n && bi >= 0 )
+				{
+					if(sumA>sumB)
+						break;
+					sumA = sumA - a[ai] + b[bi]; 
+					sumB = sumB + a[ai] - b[bi];
+					long temp = a[ai];
+					a[ai] = b[bi];
+					b[bi] = temp;
+					ai++;
+					bi--;
+					finalAns++;
+//					System.out.println("ai: " + ai);
+//					System.out.println("bi: " + bi);
+//					System.out.println(sumA);
+//					System.out.println(sumB);
+				}
+				
+				if(sumB>=sumA)
+				{
+					System.out.println(-1);
+				}
+				else
+				{
+					System.out.println(finalAns);
+				}
+
 			}
 			
+						
 		}
        
         s.close();
