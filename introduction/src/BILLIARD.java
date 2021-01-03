@@ -1,6 +1,12 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BILLIARD {
+	
+	public static class Abc {
+		long ax = 0;
+		long ay = 0;
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -13,102 +19,86 @@ public class BILLIARD {
 			long k = s.nextLong();
 			long x = s.nextLong();
 			long y = s.nextLong();
-			
+	
 			long fx = 0;
 			long fy = 0;
+						
+			ArrayList<Abc> myAl = new ArrayList<Abc>();
 			
-			int phase = 1;
+			long tt = (k-1)%4;
 			
 			if(x==y)//diagonal
 			{
-				k=0;
 				fx = n;
 				fy = n;
 			}
 			
-			if(x<y)//upper
-			{
-				while(k!=0)
-				{
-					//y!=n(Hitting Condition)
-					
-				}
-			}
 			
-			if(x>y)//lower
+			if(x>y)
 			{
-				while(k!=0)
-				{
-					//x!=n(Hitting Condition)
-					
-					if(x==n)
-					{
-						k--;
-						fx = x;
-						fy = y;
-						phase = 2;
-						
-					}
-					
-					if(y==n)
-					{
-						k--;
-						fx = x;
-						fy = y;
-						phase =3;
-						
-					}
-					
-					if(y==0)
-					{
-						k--;
-						fx = x;
-						fy = y;
-						phase = 4;
-						
-					}
-					
-					if(x==0)
-					{
-						k--;
-						fx = x;
-						fy = y;
-						phase = 1;
-						
-					}
-					
-					if(phase == 1)
-					{
-						x++;
-						y++;
-					}
-					
-					if(phase == 2)
-					{
-						x--;
-						y++;
-					}
-					
-					if(phase == 3)
-					{
-						x--;
-						y--;
-					}
-					
-					if(phase == 4)
-					{
-						x++;
-						y--;
-					}
-					
-					
-				}
 				
+				Abc obj1 = new Abc();
+				Abc obj2 = new Abc();
+				Abc obj3 = new Abc();
+				Abc obj4 = new Abc();
+				
+				obj1.ax = n;
+				obj1.ay = y+n-x;
+				
+				obj2.ax = y+n-x;
+				obj2.ay = n;
+
+				obj3.ax = 0;
+				obj3.ay = x-y;
+
+				obj4.ax = x-y;
+				obj4.ay = 0;
+
+				myAl.add(obj1);
+				myAl.add(obj2);
+				myAl.add(obj3);
+				myAl.add(obj4);
+				
+				fx = myAl.get((int) tt).ax;
+				fy = myAl.get((int) tt).ay;
+
 			}
 			
-			System.out.println(fx + " " + fy);
+			if(x<y)
+			{
+				
+				Abc obj1 = new Abc();
+				Abc obj2 = new Abc();
+				Abc obj3 = new Abc();
+				Abc obj4 = new Abc();
+				
+				obj1.ax = x+n-y;
+				obj1.ay = n;
+				
+				obj2.ax = n;
+				obj2.ay = x+n-y;
 
+				obj3.ax = y-x;
+				obj3.ay = 0;
+
+				obj4.ax = 0;
+				obj4.ay = y-x;
+
+				myAl.add(obj1);
+				myAl.add(obj2);
+				myAl.add(obj3);
+				myAl.add(obj4);
+				
+				fx = myAl.get((int) tt).ax;
+				fy = myAl.get((int) tt).ay;
+
+			}
+			
+
+			System.out.println(fx);
+			System.out.println(fy);
 		}
+		
        
         s.close();
 
