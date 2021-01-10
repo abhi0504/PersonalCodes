@@ -17,7 +17,7 @@ public class MinCountOfSquares {
 		for(int i = 4 ; i <= n ; i++)
 		{
 			dp[i] = i;
-			for(int x = 1; x<Math.ceil(Math.sqrt(n)) ; x++)
+			for(int x = 1; x<= Math.ceil(Math.sqrt(n)) ; x++)
 			{
 				int temp = x*x;
 				if(temp > i)
@@ -26,7 +26,7 @@ public class MinCountOfSquares {
 				}
 				else
 				{
-					dp[i] = Math.min(dp[i], (1+dp[i-temp]));
+					dp[i] = Math.min(dp[i], 1+dp[i-temp]);
 				}
 			}
 			
@@ -38,7 +38,7 @@ public class MinCountOfSquares {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println(MinCount(10));
+		System.out.println(MinCount(9));
 
 	}
 
