@@ -73,9 +73,34 @@ public class MinCostToPath {
 		int opt3 = MinCostToPathfuncMHelper(arr, i+1, j+1 , storage);
 		
 		return arr[i][j] + Math.min(opt1, Math.min(opt2, opt3));
-		
-		
+			
 	}
+	
+	public static int MinCostToPathfuncDP(int[][] arr)
+	{
+		int m = arr.length;
+		int n = arr[0].length;
+		int[][] storage = new int[m][n];
+		for(int i = 0 ; i < m ; i++)
+		{
+			for(int j = 0 ; j < n ; j++)
+			{
+				storage[i][j] = -1;
+			}
+		}
+ 		return MinCostToPathfuncDPHelper(arr , 0 , 0 , storage);
+	}
+
+	private static int MinCostToPathfuncDPHelper(int[][] arr, int i, int j , int[][] storage) {
+		// TODO Auto-generated method stub
+		
+		int m = arr.length;
+		int n = arr[0].length;
+				
+		
+			
+	}
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
