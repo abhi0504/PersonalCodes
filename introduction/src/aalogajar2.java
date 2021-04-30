@@ -2,54 +2,77 @@ import java.util.*;
 
 public class aalogajar2 {
 	
-	public static void main(String[] args) {
+	  public static void nextPermutation(int[] nums) {
+	        
+	        boolean check = false;
+	        int fi = nums.length-1; 
+	        
+	        
+	        
+	        for(int i = nums.length-2 ; i >= 0 ; i--)
+	        {
+	        	System.out.println(nums[i]);
+            	System.out.println(nums[i+1]);
+	            if(nums[i] < nums[i+1])
+	            {
+	                check = true;
+	                fi = i;
+	                break;
+	            }
+	        }
+	        
+	        System.out.println(check);
+	        System.out.println(fi);
+	        
+	        if(check == true)
+	        {
+	            for(int i = nums.length-1 ; i >= 0 ; i--)
+	            {
+	            	System.out.println(nums[i]);
+	            	System.out.println(nums[fi]);
+	            	
+	                if(nums[i] > nums[fi])
+	                {
+	                    swap(nums , fi , i);
+	                    System.out.println("Hi");
+	                    System.out.println(nums[0]);
+	                    System.out.println(nums[1]);
 
-		Scanner s = new Scanner(System.in);
-		int t = s.nextInt();
-		while(t-->0)
-		{
-		    	String str1 = s.next();
-				String str2 = s.next();
-				char c = str2.charAt(0);
-				char last = str2.charAt(str2.length() - 1);
-				String str = "";
-				char arr[] = new char[26];
-				for(int i = 0 ; i < str1.length() ; i++)
-				{
-					int a = str1.charAt(i);
-					arr[a-97]++;
-				}
-				for(int i = 0 ; i < str2.length() ; i++)
-				{
-					int a = str2.charAt(i);
-					arr[a-97]--;
-				}
-				for(int i = 0 ; i<26 ; i++)
-				{
-					int time = arr[i];
-					char ch = (char) (i+97);
-					
-					if(ch == c && last<c)
-					{
-						str += str2;
-					}
-					
-					for(int j = 0 ; j < time ; j++)
-					{
-						str += ch;
-					}
-					
-					if(ch == c && last>=c)
-					{
-						str += str2;
-					}
-					
-					
-				}
-				
-				System.out.println(str);
+	                    System.out.println(nums[2]);
+
+	                    break;
+	                        
+	                }
+	            }
+	        }
+	        
+	        reverse(nums , fi+1);
+	        System.out.println("Hi 2");
+	        System.out.println(nums[0]);
+            System.out.println(nums[1]);
+
+            System.out.println(nums[2]);
+	    }
+	    
+	     private static void reverse(int[] nums, int start) {
+	        int i = start, j = nums.length - 1;
+	        while (i < j) {
+	            swap(nums, i, j);
+	            i++;
+	            j--;
+	        }
+	    }
+
+	    private static void swap(int[] nums, int i, int j) {
+	        int temp = nums[i];
+	        nums[i] = nums[j];
+	        nums[j] = temp;
+	    }
+	
+	public static void main(String[] args) {
+		    int[] a = {1,2,3};
 		    
-		}
-	s.close();
+		    nextPermutation(a);
+
 	}
 }
